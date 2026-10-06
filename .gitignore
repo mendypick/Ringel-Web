@@ -1,0 +1,11 @@
+node_modules
+dist
+.gh-preview
+.DS_Store
+.env
+.env.*
+!.env.example
+*.local
+.vite
+.cache
+npm-debug.log*
