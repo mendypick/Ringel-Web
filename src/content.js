@@ -517,8 +517,8 @@ export const copy = {
     ],
     getApp: "Get the app",
     hero: {
-      l1: "for Jewish singles",
-      l2: "with high standards.",
+      l1: "Dating for Religious",
+      l2: "& Traditional Jews",
     },
     manifesto: [
       "Ringle – Dating for Religious & Traditional Jews",
@@ -541,8 +541,8 @@ export const copy = {
       body: item.en.body,
     })),
     stories: {
-      title: "It started on Ringle",
-      sub: "People worth meeting",
+      title: "Ringel's couples",
+      sub: "",
       post: "Instagram post",
       prev: "Previous couple",
       next: "Next couple",
