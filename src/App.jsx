@@ -312,7 +312,9 @@ export default function App() {
 
         <section className="manifesto" aria-label={t.standards}>
           <div className="wrap">
-            <p>{t.manifesto}</p>
+            {(Array.isArray(t.manifesto) ? t.manifesto : [t.manifesto]).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </section>
 
@@ -326,6 +328,72 @@ export default function App() {
                   <img src={photo.src} alt={photo.alt} width="160" height="160" />
                 </span>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="stories" id="stories">
+          <div className="wrap">
+            <h2>{t.stories.title}</h2>
+            {t.stories.sub ? <p className="sub">{t.stories.sub}</p> : null}
+            <div className="gallery">
+              <div className="gallery-arrows">
+                <button type="button" aria-label={t.stories.prev} onClick={() => stepGallery(-1)}>
+                  <Chevron direction="up" />
+                </button>
+                <button type="button" aria-label={t.stories.next} onClick={() => stepGallery(1)}>
+                  <Chevron direction="down" />
+                </button>
+              </div>
+              <div className="gallery-list" role="tablist" aria-label={t.stories.title} ref={listRef}>
+                {t.couples.map((photo, index) => {
+                  const selected = index === gallery;
+                  if (selected) {
+                    return (
+                      <div key={photo.id} className="feature" role="tab" aria-selected="true">
+                        <button type="button" className="feature-name" onClick={() => setGallery(index)}>
+                          <span className="pill-mark" aria-hidden="true" />
+                          {photo.title}
+                        </button>
+                        <p className="feature-body">{photo.body}</p>
+                        <a className="feature-post" href={photo.post} target="_blank" rel="noreferrer">
+                          {t.stories.post}
+                        </a>
+                      </div>
+                    );
+                  }
+                  return (
+                    <button
+                      key={photo.id}
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      className="pill"
+                      onClick={() => setGallery(index)}
+                    >
+                      <span className="pill-mark" aria-hidden="true">
+                        <Plus />
+                      </span>
+                      {photo.title}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="gallery-frame">
+                <img
+                  key={t.couples[gallery].id}
+                  src={t.couples[gallery].src}
+                  alt={t.couples[gallery].alt}
+                  width="1000"
+                  height="1200"
+                />
+              </div>
+              <div className="gallery-detail">
+                <p>{t.couples[gallery].body}</p>
+                <a href={t.couples[gallery].post} target="_blank" rel="noreferrer">
+                  {t.stories.post}
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -393,72 +461,6 @@ export default function App() {
               </div>
               <div className="gallery-detail">
                 <p>{t.screens[tour].body}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="stories" id="stories">
-          <div className="wrap">
-            <h2>{t.stories.title}</h2>
-            <p className="sub">{t.stories.sub}</p>
-            <div className="gallery">
-              <div className="gallery-arrows">
-                <button type="button" aria-label={t.stories.prev} onClick={() => stepGallery(-1)}>
-                  <Chevron direction="up" />
-                </button>
-                <button type="button" aria-label={t.stories.next} onClick={() => stepGallery(1)}>
-                  <Chevron direction="down" />
-                </button>
-              </div>
-              <div className="gallery-list" role="tablist" aria-label={t.stories.title} ref={listRef}>
-                {t.couples.map((photo, index) => {
-                  const selected = index === gallery;
-                  if (selected) {
-                    return (
-                      <div key={photo.id} className="feature" role="tab" aria-selected="true">
-                        <button type="button" className="feature-name" onClick={() => setGallery(index)}>
-                          <span className="pill-mark" aria-hidden="true" />
-                          {photo.title}
-                        </button>
-                        <p className="feature-body">{photo.body}</p>
-                        <a className="feature-post" href={photo.post} target="_blank" rel="noreferrer">
-                          {t.stories.post}
-                        </a>
-                      </div>
-                    );
-                  }
-                  return (
-                    <button
-                      key={photo.id}
-                      type="button"
-                      role="tab"
-                      aria-selected="false"
-                      className="pill"
-                      onClick={() => setGallery(index)}
-                    >
-                      <span className="pill-mark" aria-hidden="true">
-                        <Plus />
-                      </span>
-                      {photo.title}
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="gallery-frame">
-                <img
-                  key={t.couples[gallery].id}
-                  src={t.couples[gallery].src}
-                  alt={t.couples[gallery].alt}
-                  width="1000"
-                  height="1200"
-                />
-              </div>
-              <div className="gallery-detail">
-                <p>{t.couples[gallery].body}</p>
-                <a href={t.couples[gallery].post} target="_blank" rel="noreferrer">
-                  {t.stories.post}
-                </a>
               </div>
             </div>
           </div>

@@ -238,10 +238,11 @@ html[lang="en"] .overlay button { font-family: var(--latin); }
 }
 
 .hero-inner {
+  --hero-gap: clamp(36px, 5vh, 64px);
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: clamp(36px, 5vh, 64px);
+  gap: var(--hero-gap);
 }
 
 h1 {
@@ -259,7 +260,7 @@ h1 span { display: block; white-space: nowrap; }
   position: absolute;
   left: 18%;
   right: 18%;
-  bottom: -8px;
+  bottom: calc(var(--hero-gap) / -2);
   height: 1px;
   background: var(--blue);
   opacity: 0;
@@ -278,13 +279,15 @@ html[lang="en"] h1 {
 }
 
 .manifesto p {
-  max-width: 16em;
+  max-width: 18em;
   margin-inline: auto;
   color: var(--blue);
   font-size: clamp(28px, 3.5vw, 48px);
   line-height: 1.35;
   text-align: center;
 }
+
+.manifesto p + p { margin-top: 0.75em; }
 
 .standards {
   padding: clamp(88px, 11vw, 140px) 0;

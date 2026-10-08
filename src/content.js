@@ -16,14 +16,14 @@ const appScreens = [
     src: file("photos/app/store-elevated.jpg"),
     he: {
       src: file("photos/app/store-elevated-he.jpg"),
-      alt: "זוג, עם הכיתוב הכרויות יהודיות ברמה גבוהה",
-      title: "ברמה גבוהה",
-      body: "הכרויות יהודיות, ברמה גבוהה.",
+      alt: "זוג, עם הכיתוב הכרויות לדתיים ומסורתיים",
+      title: "דתיים ומסורתיים",
+      body: "הכרויות לדתיים ומסורתיים",
     },
     en: {
-      alt: "A couple, with the line Jewish dating, elevated",
-      title: "Elevated",
-      body: "Jewish dating, elevated.",
+      alt: "A couple, with the line Dating for Religious & Traditional Jews",
+      title: "Religious Jews",
+      body: "Dating for Religious & Traditional Jews",
     },
   },
   {
@@ -407,10 +407,12 @@ export const copy = {
     hero: {
       l1: "רווקים",
       l2: "דתיים ומסורתיים",
-      l3: "עם סטנדרטים גבוהים",
     },
-    manifesto:
-      "כל טבעת גדולה מתחילה במציאת מישהו שראוי לבחור בו. זה הרעיון מאחורי רינגל. אפליקציית הכרויות ליהודים דתיים ומסורתיים - אנשים שיודעים מה הם מחפשים ומעריכים קשר משמעותי. כי למצוא את האדם הנכון מתחיל בלדעת מה חשוב לך.",
+    manifesto: [
+      "רינגל - אפליקציית ההיכרויות לדתיים ומסורתיים",
+      "אלפי זוגות כבר הכירו ברינגל, התאהבו ובנו יחד בית. יצרנו חוויית היכרות כיפית, איכותית ובטוחה, עם משתמשים מאומתים, מנגנוני הגנה וקהילה של דתיים ומסורתיים שבאמת רוצים להכיר.",
+      "כי בסוף, המטרה היא לא להישאר באפליקציה - אלא למצוא את האדם שאיתו תרצו לצעוד יחד לחופה.",
+    ],
     standards: "אנשים בסטנדרטים שלך",
     singles: singles.map((item) => ({ src: item.src, alt: item.he })),
     app: {
@@ -426,8 +428,8 @@ export const copy = {
       body: item.he.body,
     })),
     stories: {
-      title: "זה התחיל ברינגל",
-      sub: "אנשים ששווה להכיר",
+      title: "הזוגות שלנו",
+      sub: "",
       post: "לפוסט באינסטגרם",
       prev: "הזוג הקודם",
       next: "הזוג הבא",
@@ -476,7 +478,7 @@ export const copy = {
     },
     support: {
       eyebrow: "תמיכה",
-      title: "נשמח לשמוע.",
+      title: "נשמח לשמוע ממך",
       email: "support@ringledating.com",
       whatsapp: "וואטסאפ",
     },
@@ -518,8 +520,12 @@ export const copy = {
       l1: "for Jewish singles",
       l2: "with high standards.",
     },
-    manifesto:
-      "Every great ring starts with finding someone worth choosing. That's the idea behind Ringle. A dating app for religious and traditional Jews — people who know what they're looking for and value meaningful connections. Because finding the right person starts with knowing what matters to you.",
+    manifesto: [
+      "Ringle – Dating for Religious & Traditional Jews",
+      "Thousands of couples have already met on Ringle, fallen in love, and started building a life together.",
+      "We’ve created a fun, high-quality and safe dating experience, with verified profiles, advanced safety features, and a community of Religious and Traditional Jews who are genuinely looking for something real.",
+      "Because the goal isn’t to stay on a dating app - it’s to find the person you’ll build a home with and walk with under the chuppah.",
+    ],
     standards: "People at your standards",
     singles: singles.map((item) => ({ src: item.src, alt: item.en })),
     app: {
