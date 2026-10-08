@@ -259,6 +259,15 @@ export default function App() {
                 {item.label}
               </a>
             ))}
+            <a
+              href="#press"
+              onClick={(event) => {
+                event.preventDefault();
+                goTo("#press");
+              }}
+            >
+              {t.press.title}
+            </a>
             <InstallLink onOpen={close} onFallback={() => goTo("#download")}>
               {t.getApp}
             </InstallLink>
@@ -462,6 +471,21 @@ export default function App() {
               <div className="gallery-detail">
                 <p>{t.screens[tour].body}</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="press" id="press" aria-label={t.press.title}>
+          <div className="wrap press-panel">
+            <h2>{t.press.title}</h2>
+            <span className="press-rule" aria-hidden="true" />
+            <div className="press-logos">
+              {t.press.logos.map((logo) => (
+                <a key={logo.id} href={logo.href} target="_blank" rel="noreferrer">
+                  <img src={logo.src} alt="" width="502" height="502" />
+                  <span>{logo.name}</span>
+                </a>
+              ))}
             </div>
           </div>
         </section>

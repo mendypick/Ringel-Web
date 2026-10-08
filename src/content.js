@@ -10,6 +10,30 @@ export const external = {
 
 const file = (path) => `${import.meta.env.BASE_URL}${path}`;
 
+const pressLogos = [
+  {
+    id: "mako",
+    src: file("press/mako.png"),
+    href: "https://www.mako.co.il/news-digital/2023_q3/Article-2bb097dab730a81026.htm",
+    he: "מאקו",
+    en: "Mako",
+  },
+  {
+    id: "kipa",
+    src: file("press/kipa.png"),
+    href: "https://www.kipa.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/1164270-0/",
+    he: "כיפה",
+    en: "Kipa",
+  },
+  {
+    id: "channel14",
+    src: file("press/channel14.png"),
+    href: "https://www.youtube.com/watch?v=itn-L6lS1eM",
+    he: "ערוץ 14",
+    en: "Channel 14",
+  },
+];
+
 const appScreens = [
   {
     id: "elevated",
@@ -414,6 +438,10 @@ export const copy = {
       "כי בסוף, המטרה היא לא להישאר באפליקציה - אלא למצוא את האדם שאיתו תרצו לצעוד יחד לחופה.",
     ],
     standards: "אנשים בסטנדרטים שלך",
+    press: {
+      title: "עלינו",
+      logos: pressLogos.map((item) => ({ ...item, name: item.he })),
+    },
     singles: singles.map((item) => ({ src: item.src, alt: item.he })),
     app: {
       title: "מותאם בדיוק לצרכים שלך",
@@ -527,6 +555,10 @@ export const copy = {
       "Because the goal isn’t to stay on a dating app - it’s to find the person you’ll build a home with and walk with under the chuppah.",
     ],
     standards: "People at your standards",
+    press: {
+      title: "About us",
+      logos: pressLogos.map((item) => ({ ...item, name: item.en })),
+    },
     singles: singles.map((item) => ({ src: item.src, alt: item.en })),
     app: {
       title: "Fitted to what you need.",
