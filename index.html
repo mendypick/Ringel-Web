@@ -21,16 +21,8 @@
     <title>רינגל — הכרויות ליהודים דתיים ומסורתיים</title>
     <script>
       (function () {
-        var lang = "en";
-        try {
-          var saved = localStorage.getItem("ringle-lang");
-          if (saved === "he" || saved === "en") {
-            lang = saved;
-          } else {
-            var primary = (navigator.languages && navigator.languages[0]) || navigator.language || "";
-            if (/^he\b/i.test(primary)) lang = "he";
-          }
-        } catch (error) {}
+        var base = "%BASE_URL%".replace(/\/$/, "");
+        var lang = new RegExp("^" + base + "/en(/|$)").test(location.pathname) ? "en" : "he";
         var root = document.documentElement;
         root.lang = lang;
         root.dir = lang === "he" ? "rtl" : "ltr";

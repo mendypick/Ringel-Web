@@ -3,12 +3,15 @@ import { copy, external } from "./content.js";
 import { Lockup } from "./components/Mark.jsx";
 import { LegalPage } from "./LegalPage.jsx";
 import { EntranceMark, INTRO, markIntroPlayed, shouldPlayIntro } from "./Entrance.jsx";
-import { resolveLanguage, saveLanguage } from "./language.js";
+import { parsePath, pathFor } from "./routes.js";
 
-function legalFromHash() {
-  const hash = window.location.hash;
-  if (hash === "#privacy" || hash === "#terms") return hash.slice(1);
-  return null;
+function route() {
+  return parsePath(window.location.pathname);
+}
+
+function scrollToHash(hash) {
+  if (!hash || hash === "#top") window.scrollTo(0, 0);
+  else document.querySelector(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
 }
 
 function deviceStore() {
@@ -43,12 +46,12 @@ function InstallLink({ className, children, onOpen, onFallback }) {
 }
 
 export default function App() {
-  const [lang, setLang] = useState(resolveLanguage);
+  const [lang, setLang] = useState(() => route().lang);
   const [open, setOpen] = useState(false);
   const [faq, setFaq] = useState(null);
   const [gallery, setGallery] = useState(0);
   const [tour, setTour] = useState(0);
-  const [doc, setDoc] = useState(legalFromHash);
+  const [doc, setDoc] = useState(() => route().doc);
   const [intro, setIntro] = useState(shouldPlayIntro);
   const listRef = useRef(null);
   const tourRef = useRef(null);
@@ -85,6 +88,7 @@ export default function App() {
     const titles = {
       privacy: lang === "he" ? "מדיניות פרטיות — רינגל" : "Privacy Policy — Ringle",
       terms: lang === "he" ? "תנאי שימוש — רינגל" : "Terms of Use — Ringle",
+      subscription: lang === "he" ? "תנאי המנוי — רינגל" : "Subscription Terms — Ringle",
     };
     document.title = titles[doc] || t.metaTitle;
     const meta = document.querySelector('meta[name="description"]');
@@ -135,14 +139,25 @@ export default function App() {
   }, [tour, lang]);
 
   useEffect(() => {
+    const current = route();
+    if (current.doc) return;
+    const home = pathFor(current.lang);
+    if (window.location.pathname === home && current.known) return;
+    const hash = current.section && current.section !== "#top" ? current.section : window.location.hash;
+    window.history.replaceState(null, "", home + hash);
+    if (hash) scrollToHash(hash);
+  }, []);
+
+  useEffect(() => {
     const sync = () => {
-      const next = legalFromHash();
-      scrollRef.current = next ? null : window.location.hash || "#top";
-      setDoc(next);
-      if (next) window.scrollTo(0, 0);
+      const current = route();
+      setLang(current.lang);
+      scrollRef.current = current.doc ? null : window.location.hash || "#top";
+      setDoc(current.doc);
+      if (current.doc) window.scrollTo(0, 0);
     };
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
+    window.addEventListener("popstate", sync);
+    return () => window.removeEventListener("popstate", sync);
   }, []);
 
   useEffect(() => {
@@ -153,27 +168,27 @@ export default function App() {
     const hash = scrollRef.current;
     if (!hash) return;
     scrollRef.current = null;
-    if (hash === "#top") window.scrollTo(0, 0);
-    else document.querySelector(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
+    scrollToHash(hash);
   }, [doc]);
 
   const close = () => setOpen(false);
   const goTo = (hash) => {
     setOpen(false);
-    window.history.pushState(null, "", hash);
-    if (hash === "#privacy" || hash === "#terms") {
-      scrollRef.current = null;
-      setDoc(hash.slice(1));
-      window.scrollTo(0, 0);
-      return;
-    }
     if (doc) {
+      window.history.pushState(null, "", pathFor(lang) + (hash === "#top" ? "" : hash));
       scrollRef.current = hash;
       setDoc(null);
       return;
     }
-    if (hash === "#top") window.scrollTo(0, 0);
-    else document.querySelector(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
+    window.history.pushState(null, "", hash);
+    scrollToHash(hash);
+  };
+  const openDoc = (id) => {
+    setOpen(false);
+    window.history.pushState(null, "", pathFor(lang, id));
+    scrollRef.current = null;
+    setDoc(id);
+    window.scrollTo(0, 0);
   };
   const stepGallery = (direction) => {
     setGallery((index) => (index + direction + t.couples.length) % t.couples.length);
@@ -183,9 +198,7 @@ export default function App() {
   };
   const switchLang = () => {
     const next = lang === "he" ? "en" : "he";
-    saveLanguage(next);
-    document.documentElement.lang = next;
-    document.documentElement.dir = next === "he" ? "rtl" : "ltr";
+    window.history.pushState(null, "", pathFor(next, doc) + (doc ? "" : window.location.hash));
     setLang(next);
     setFaq(null);
     close();
@@ -275,24 +288,18 @@ export default function App() {
               {t.otherLang}
             </button>
             <div className="overlay-legal">
-              <a
-                href="#privacy"
-                onClick={(event) => {
-                  event.preventDefault();
-                  goTo("#privacy");
-                }}
-              >
-                {t.footer.privacy}
-              </a>
-              <a
-                href="#terms"
-                onClick={(event) => {
-                  event.preventDefault();
-                  goTo("#terms");
-                }}
-              >
-                {t.footer.terms}
-              </a>
+              {["privacy", "terms", "subscription"].map((id) => (
+                <a
+                  key={id}
+                  href={pathFor(lang, id)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    openDoc(id);
+                  }}
+                >
+                  {t.footer[id]}
+                </a>
+              ))}
             </div>
           </nav>
         </div>
@@ -300,7 +307,7 @@ export default function App() {
 
       <main id="content">
         {doc ? (
-          <LegalPage lang={lang} id={doc} onBack={() => goTo("#top")} />
+          <LegalPage lang={lang} id={doc} onBack={() => goTo("#top")} onOpenDoc={openDoc} />
         ) : (
           <>
         <section className="hero" id="top">
@@ -608,28 +615,19 @@ export default function App() {
                   {t.support.whatsapp}
                 </a>
               </li>
-              <li>
-                <a
-                  href="#privacy"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    goTo("#privacy");
-                  }}
-                >
-                  {t.footer.privacy}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#terms"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    goTo("#terms");
-                  }}
-                >
-                  {t.footer.terms}
-                </a>
-              </li>
+              {["privacy", "terms", "subscription"].map((id) => (
+                <li key={id}>
+                  <a
+                    href={pathFor(lang, id)}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      openDoc(id);
+                    }}
+                  >
+                    {t.footer[id]}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

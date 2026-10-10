@@ -1,11 +1,19 @@
 import { legalCopy, legalDocument, legalParts } from "./legal.js";
+import { pathFor } from "./routes.js";
 
-function Rich({ text }) {
+function Rich({ text, lang, onOpenDoc }) {
   return legalParts(text).map((part, index) => {
     if (part.type === "text") return <span key={index}>{part.value}</span>;
-    if (part.type === "hash") {
+    if (part.type === "doc") {
       return (
-        <a key={index} href={part.hash}>
+        <a
+          key={index}
+          href={pathFor(lang, part.doc)}
+          onClick={(event) => {
+            event.preventDefault();
+            onOpenDoc(part.doc);
+          }}
+        >
           {part.value}
         </a>
       );
@@ -25,7 +33,7 @@ function Rich({ text }) {
   });
 }
 
-export function LegalPage({ lang, id, onBack }) {
+export function LegalPage({ lang, id, onBack, onOpenDoc }) {
   const copy = legalCopy[lang];
   const { title, date, body } = legalDocument(copy[id]);
 
@@ -34,7 +42,7 @@ export function LegalPage({ lang, id, onBack }) {
       <div className="wrap doc-inner">
         <a
           className="back"
-          href="#top"
+          href={pathFor(lang)}
           onClick={(event) => {
             event.preventDefault();
             onBack();
@@ -46,7 +54,7 @@ export function LegalPage({ lang, id, onBack }) {
         {date && <p className="doc-date">{date}</p>}
         {body.map((line, index) => (
           <p key={index}>
-            <Rich text={line} />
+            <Rich text={line} lang={lang} onOpenDoc={onOpenDoc} />
           </p>
         ))}
       </div>

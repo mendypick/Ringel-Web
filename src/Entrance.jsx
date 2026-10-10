@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import { parsePath } from "./routes.js";
 
 export const INTRO = {
   reveal: 500,
@@ -19,8 +20,7 @@ const EASE = "cubic-bezier(0.76, 0, 0.24, 1)";
 export function shouldPlayIntro() {
   if (typeof window === "undefined") return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  const hash = window.location.hash;
-  if (hash === "#privacy" || hash === "#terms") return false;
+  if (parsePath(window.location.pathname).doc) return false;
   try {
     if (sessionStorage.getItem("ringle-intro") === "1") return false;
   } catch {

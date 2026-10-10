@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.ringledating.com/</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en/privacy-policy" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/en/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en/privacy-policy" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/terms-of-use</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/terms-of-use" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en/terms-of-use" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/en/terms-of-use</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/terms-of-use" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en/terms-of-use" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/subscription-terms</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/subscription-terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en/subscription-terms" />
+  </url>
+  <url>
+    <loc>https://www.ringledating.com/en/subscription-terms</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.ringledating.com/subscription-terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ringledating.com/en/subscription-terms" />
+  </url>
+</urlset>

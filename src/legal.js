@@ -2,16 +2,20 @@ import privacyHe from "./legal/privacy.he.txt?raw";
 import privacyEn from "./legal/privacy.en.txt?raw";
 import termsHe from "./legal/terms.he.txt?raw";
 import termsEn from "./legal/terms.en.txt?raw";
+import subscriptionHe from "./legal/subscription.he.txt?raw";
+import subscriptionEn from "./legal/subscription.en.txt?raw";
 
 export const legalCopy = {
   he: {
     privacy: privacyHe,
     terms: termsHe,
+    subscription: subscriptionHe,
     back: "חזרה לאתר",
   },
   en: {
     privacy: privacyEn,
     terms: termsEn,
+    subscription: subscriptionEn,
     back: "Back to Ringle",
   },
 };
@@ -22,6 +26,10 @@ function isFreshBlock(line) {
   return /^(?:•|- |\d+(?:\.\d+)*\.?\s)/.test(line);
 }
 
+function isHeading(line) {
+  return line.length < 80 && /^\d+\s?[a-zא-ת]?\.\s/.test(line);
+}
+
 function joined(lines) {
   const blocks = [];
   let current = "";
@@ -30,7 +38,7 @@ function joined(lines) {
       current = line;
       continue;
     }
-    if (isFreshBlock(line) || sentenceEnd.test(current)) {
+    if (isFreshBlock(line) || isHeading(current) || sentenceEnd.test(current)) {
       blocks.push(current);
       current = line;
     } else {
@@ -66,13 +74,9 @@ export function legalParts(text) {
     const index = match.index ?? 0;
     if (index > last) parts.push({ type: "text", value: text.slice(last, index) });
     if (value === "[תנאי השימוש]" || value === "[Terms of Use]" || /terms-of-use/.test(value)) {
-      parts.push({
-        type: "hash",
-        hash: "#terms",
-        value: value.replace(/^\[|\]$/g, ""),
-      });
+      parts.push({ type: "doc", doc: "terms", value: value.replace(/^\[|\]$/g, "") });
     } else if (/privacy-policy/.test(value)) {
-      parts.push({ type: "hash", hash: "#privacy", value });
+      parts.push({ type: "doc", doc: "privacy", value });
     } else if (value.includes("@")) {
       parts.push({ type: "mail", value });
     } else {

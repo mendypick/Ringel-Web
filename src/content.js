@@ -517,6 +517,7 @@ export const copy = {
       support: "תמיכה",
       privacy: "מדיניות פרטיות",
       terms: "תנאי שימוש",
+      subscription: "תנאי המנוי",
       rights: "© 2026 רינגל דייטינג בע״מ",
       intention: "מתוך כוונה.",
       socials: [
@@ -634,6 +635,7 @@ export const copy = {
       support: "Support",
       privacy: "Privacy Policy",
       terms: "Terms of Use",
+      subscription: "Subscription Terms",
       rights: "© 2026 Ringle Dating LTD",
       intention: "Made with intention.",
       socials: [
