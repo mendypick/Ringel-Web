@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 import { allPaths } from "./src/routes.js";
 
 // github pages has no rewrites, so every route gets its own copy of index.html
+// route.html answers /route without a redirect, route/index.html answers /route/
 function routePages() {
   return {
     name: "route-pages",
@@ -17,6 +18,7 @@ function routePages() {
         const dir = join(dist, path);
         mkdirSync(dir, { recursive: true });
         writeFileSync(join(dir, "index.html"), html);
+        writeFileSync(`${dir}.html`, html);
       }
       cpSync(join(dist, "index.html"), join(dist, "404.html"));
     },
