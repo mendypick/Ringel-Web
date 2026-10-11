@@ -243,9 +243,10 @@ html[lang="en"] .overlay button { font-family: var(--latin); }
 
 .hero {
   min-height: 100svh;
+  margin-top: -90px;
   display: grid;
   place-items: center;
-  padding: 120px 20px 80px;
+  padding: 90px 20px;
   text-align: center;
   background: white;
 }
@@ -1132,7 +1133,7 @@ section { scroll-margin-top: 90px; }
 }
 
 @media (max-width: 720px) {
-  .hero { min-height: 100svh; padding: 110px 16px 64px; overflow-x: clip; }
+  .hero { padding-inline: 16px; overflow-x: clip; }
   h1,
   html[lang="en"] h1 { font-size: clamp(30px, 9.6vw, 42px); }
   h1 span { white-space: nowrap; }

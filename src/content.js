@@ -434,7 +434,6 @@ export const copy = {
       l2: "לדתיים ומסורתיים",
     },
     manifesto: [
-      "רינגל - אפליקציית ההיכרויות לדתיים ומסורתיים",
       "אלפי זוגות כבר הכירו ברינגל, התאהבו ובנו יחד בית. יצרנו חוויית היכרות כיפית, איכותית ובטוחה, עם משתמשים מאומתים, מנגנוני הגנה וקהילה של דתיים ומסורתיים שבאמת רוצים להכיר.",
       "כי בסוף, המטרה היא לא להישאר באפליקציה - אלא למצוא את האדם שאיתו תרצו לצעוד יחד לחופה.",
     ],
@@ -552,10 +551,8 @@ export const copy = {
       l2: "& Traditional Jews",
     },
     manifesto: [
-      "Ringle – Dating for Religious & Traditional Jews",
-      "Thousands of couples have already met on Ringle, fallen in love, and started building a life together.",
-      "We’ve created a fun, high-quality and safe dating experience, with verified profiles, advanced safety features, and a community of Religious and Traditional Jews who are genuinely looking for something real.",
-      "Because the goal isn’t to stay on a dating app - it’s to find the person you’ll build a home with and walk with under the chuppah.",
+      "Thousands of couples have already met on Ringle and built a life together.",
+      "Ringle offers a safe, high-quality dating experience for Religious and Traditional Jews looking for something real - because the goal isn’t to stay on a dating app, it’s to find the person you’ll build a home with.",
     ],
     standards: "People at your standards",
     press: {
