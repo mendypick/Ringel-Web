@@ -6,6 +6,7 @@ export const external = {
   instagram: "https://www.instagram.com/ringle_dating/",
   youtube: "https://www.youtube.com/@ringle-dating",
   tiktok: "https://www.tiktok.com/@ringledating",
+  facebook: "https://www.facebook.com/profile.php?id=100090308206826",
 };
 
 const file = (path) => `${import.meta.env.BASE_URL}${path}`;
@@ -524,6 +525,7 @@ export const copy = {
         ["Instagram", "instagram"],
         ["TikTok", "tiktok"],
         ["YouTube", "youtube"],
+        ["Facebook", "facebook"],
       ],
     },
   },
@@ -642,6 +644,7 @@ export const copy = {
         ["Instagram", "instagram"],
         ["TikTok", "tiktok"],
         ["YouTube", "youtube"],
+        ["Facebook", "facebook"],
       ],
     },
   },
