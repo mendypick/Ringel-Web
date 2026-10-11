@@ -533,7 +533,7 @@ export const copy = {
     code: "en",
     metaTitle: "Ringle — Dating for Religious & Traditional Jews",
     metaDescription:
-      "Ringle — dating for religious and traditional Jews. People at your standards.",
+      "Ringle — dating for religious and traditional Jews. People who meet your standards.",
     skip: "Skip to content",
     langLabel: "Language",
     otherLang: "עברית",
@@ -554,7 +554,7 @@ export const copy = {
       "Thousands of couples have already met on Ringle and built a life together.",
       "Ringle offers a safe, high-quality dating experience for Religious and Traditional Jews looking for something real - because the goal isn’t to stay on a dating app, it’s to find the person you’ll build a home with.",
     ],
-    standards: "People at your standards",
+    standards: "People who meet your standards",
     press: {
       title: "They wrote about us",
       logos: pressLogos.map((item) => ({ ...item, name: item.en })),
