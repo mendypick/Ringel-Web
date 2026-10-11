@@ -430,8 +430,8 @@ export const copy = {
     ],
     getApp: "להורדת האפליקציה",
     hero: {
-      l1: "הכרויות לרווקים",
-      l2: "דתיים ומסורתיים",
+      l1: "הכרויות",
+      l2: "לדתיים ומסורתיים",
     },
     manifesto: [
       "רינגל - אפליקציית ההיכרויות לדתיים ומסורתיים",
@@ -440,7 +440,7 @@ export const copy = {
     ],
     standards: "אנשים בסטנדרטים שלך",
     press: {
-      title: "עלינו",
+      title: "כתבו עלינו",
       logos: pressLogos.map((item) => ({ ...item, name: item.he })),
     },
     singles: singles.map((item) => ({ src: item.src, alt: item.he })),
@@ -559,7 +559,7 @@ export const copy = {
     ],
     standards: "People at your standards",
     press: {
-      title: "About us",
+      title: "They wrote about us",
       logos: pressLogos.map((item) => ({ ...item, name: item.en })),
     },
     singles: singles.map((item) => ({ src: item.src, alt: item.en })),
