@@ -18,7 +18,14 @@ export function Mark({ size = 40, title }) {
 
 export function Lockup({ onClick, image = false }) {
   return (
-    <a className="lockup" href="#top" onClick={onClick}>
+    <a
+      className="lockup"
+      href="#top"
+      onClick={(event) => {
+        event.preventDefault();
+        onClick?.(event);
+      }}
+    >
       {image ? (
         <img
           className="wordmark"

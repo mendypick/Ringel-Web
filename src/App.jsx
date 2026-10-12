@@ -180,7 +180,7 @@ export default function App() {
       setDoc(null);
       return;
     }
-    window.history.pushState(null, "", hash);
+    window.history.replaceState(null, "", hash === "#top" ? pathFor(lang) : hash);
     scrollToHash(hash);
   };
   const openDoc = (id) => {
@@ -198,7 +198,7 @@ export default function App() {
   };
   const switchLang = () => {
     const next = lang === "he" ? "en" : "he";
-    window.history.pushState(null, "", pathFor(next, doc) + (doc ? "" : window.location.hash));
+    window.history.replaceState(null, "", pathFor(next, doc) + (doc ? "" : window.location.hash));
     setLang(next);
     setFaq(null);
     close();
@@ -215,7 +215,14 @@ export default function App() {
   return (
     <>
       {intro && <EntranceMark onDone={finishIntro} />}
-      <a className="skip" href="#content">
+      <a
+        className="skip"
+        href="#content"
+        onClick={(event) => {
+          event.preventDefault();
+          scrollToHash("#content");
+        }}
+      >
         {t.skip}
       </a>
       <header className="nav">
