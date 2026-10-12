@@ -415,8 +415,8 @@ export const copy = {
   he: {
     dir: "rtl",
     code: "he",
-    metaTitle: "רינגל — הכרויות ליהודים דתיים ומסורתיים",
-    metaDescription: "רינגל — הכרויות ליהודים דתיים ומסורתיים. אנשים בסטנדרטים שלך.",
+    metaTitle: "רינגל - הכרויות ליהודים דתיים ומסורתיים",
+    metaDescription: "רינגל - הכרויות ליהודים דתיים ומסורתיים. אנשים בסטנדרטים שלך.",
     skip: "דלג לתוכן",
     langLabel: "שפה",
     otherLang: "EN",
@@ -531,9 +531,9 @@ export const copy = {
   en: {
     dir: "ltr",
     code: "en",
-    metaTitle: "Ringle — Dating for Religious & Traditional Jews",
+    metaTitle: "Ringle - Dating for Religious & Traditional Jews",
     metaDescription:
-      "Ringle — dating for religious and traditional Jews. People who meet your standards.",
+      "Ringle - dating for religious and traditional Jews. People who meet your standards.",
     skip: "Skip to content",
     langLabel: "Language",
     otherLang: "עברית",

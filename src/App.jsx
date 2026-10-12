@@ -86,9 +86,9 @@ export default function App() {
     document.documentElement.lang = t.code;
     document.documentElement.dir = t.dir;
     const titles = {
-      privacy: lang === "he" ? "מדיניות פרטיות — רינגל" : "Privacy Policy — Ringle",
-      terms: lang === "he" ? "תנאי שימוש — רינגל" : "Terms of Use — Ringle",
-      subscription: lang === "he" ? "תנאי המנוי — רינגל" : "Subscription Terms — Ringle",
+      privacy: lang === "he" ? "מדיניות פרטיות - רינגל" : "Privacy Policy - Ringle",
+      terms: lang === "he" ? "תנאי שימוש - רינגל" : "Terms of Use - Ringle",
+      subscription: lang === "he" ? "תנאי המנוי - רינגל" : "Subscription Terms - Ringle",
     };
     document.title = titles[doc] || t.metaTitle;
     const meta = document.querySelector('meta[name="description"]');
